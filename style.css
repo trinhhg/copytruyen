@@ -5,7 +5,7 @@ body {
 }
 
 .container {
-  max-width: 700px;
+  max-width: 900px;
   margin: auto;
   background: white;
   padding: 20px;
@@ -36,7 +36,7 @@ textarea:focus, input:focus {
 .row {
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 20px;
 }
 
 .half {
@@ -45,7 +45,6 @@ textarea:focus, input:focus {
 
 .button-row {
   display: flex;
-  gap: 10px;
   justify-content: flex-end;
   margin-top: 10px;
 }
