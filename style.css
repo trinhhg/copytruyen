@@ -54,7 +54,8 @@ input, textarea {
   font-size: 0.875rem;
   background: #f9fafb;
   resize: vertical;
-  max-height: 350px;
+  max-height: 400px;
+  min-height: 200px;
   overflow-y: auto;
 }
 
@@ -131,6 +132,6 @@ button:disabled {
   }
 
   textarea {
-    max-height: 250px;
+    max-height: 300px;
   }
 }
