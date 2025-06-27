@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZingTruyện Copy Tool</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
@@ -29,17 +29,18 @@
         <label for="inputText">Dán nội dung từ zingtruyen.store:</label>
         <textarea id="inputText" placeholder="Dán nội dung đã sao chép từ zingtruyen.store (Ctrl+A, Ctrl+C)" aria-describedby="inputHelp"></textarea>
         <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép từ trang zingtruyen.store</p>
+        <div class="button-row">
+          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
+        </div>
       </div>
       <div class="textarea-group">
         <label for="output">Kết quả trích xuất:</label>
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
         <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
+        <div class="button-row">
+          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
+        </div>
       </div>
-    </div>
-
-    <div class="button-row">
-      <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
-      <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
     </div>
   </div>
 
