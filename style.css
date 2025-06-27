@@ -63,7 +63,7 @@ input:focus {
 
 .content-row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr; /* Sửa lỗi từ "1 Cromer" thành "1fr 1fr" */
   gap: 12px;
   margin-bottom: 20px;
 }
