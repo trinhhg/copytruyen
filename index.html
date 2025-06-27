@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZingTruyện Extract Tool</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>ZingTruyện Copy Tool</h1>
+
+    <label for="linkInput">Link chương từ zingtruyen.store:</label>
+    <input type="text" id="linkInput" placeholder="https://zingtruyen.store/..." aria-describedby="linkHelp" />
+    <p id="linkHelp" class="sr-only">Nhập URL chương từ zingtruyen.store</p>
+
+    <div class="row">
+      <div class="half">
+        <label for="startInput">Bắt đầu (VD: Chương 21):</label>
+        <input type="text" id="startInput" placeholder="Chương 21" aria-describedby="startHelp" />
+        <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
+      </div>
+      <div class="half">
+        <label for="endInput">Kết thúc (VD: Chương 22):</label>
+        <input type="text" id="endInput" placeholder="Chương 22" aria-describedby="endHelp" />
+        <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
+      </div>
+    </div>
+
+    <textarea id="output" rows="20" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
+    <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
+
+    <div class="button-row">
+      <button id="extractBtn" aria-label="Lấy nội dung chương">Lấy nội dung</button>
+      <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
