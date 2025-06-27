@@ -5,41 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZingTruyện Extract Tool</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
     <h1>ZingTruyện Copy Tool</h1>
 
-    <div class="row">
-      <div class="half">
-        <label for="startInput">Từ khóa bắt đầu (VD: Chương 230):</label>
-        <input type="text" id="startInput" placeholder="Chương 230" aria-describedby="startHelp" />
+    <div class="keyword-row">
+      <div class="input-group">
+        <label for="startInput">Từ khóa bắt đầu (VD: 230):</label>
+        <input type="text" id="startInput" placeholder="230" aria-describedby="startHelp" />
         <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
       </div>
-      <div class="half">
-        <label for="endInput">Từ khóa kết thúc (VD: Chương 231):</label>
-        <input type="text" id="endInput" placeholder="Chương 231" aria-describedby="endHelp" />
+      <div class="input-group">
+        <label for="endInput">Từ khóa kết thúc (VD: 231):</label>
+        <input type="text" id="endInput" placeholder="231" aria-describedby="endHelp" />
         <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
       </div>
     </div>
 
-    <div class="row">
-      <div class="half">
+    <div class="content-row">
+      <div class="textarea-group">
         <label for="inputText">Dán nội dung từ zingtruyen.store:</label>
-        <textarea id="inputText" rows="20" placeholder="Dán nội dung đã sao chép từ zingtruyen.store (Ctrl+A, Ctrl+C)" aria-describedby="inputHelp"></textarea>
+        <textarea id="inputText" rows="12" placeholder="Dán nội dung đã sao chép từ zingtruyen.store (Ctrl+A, Ctrl+C)" aria-describedby="inputHelp"></textarea>
         <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép từ trang zingtruyen.store</p>
-        <div class="button-row">
-          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
-        </div>
       </div>
-      <div class="half">
+      <div class="textarea-group">
         <label for="output">Kết quả trích xuất:</label>
-        <textarea id="output" rows="20" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
+        <textarea id="output" rows="12" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
         <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
-        <div class="button-row">
-          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
-        </div>
       </div>
+    </div>
+
+    <div class="button-row">
+      <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
+      <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
     </div>
   </div>
 
