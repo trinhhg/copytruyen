@@ -3,32 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZingTruyện Copy Tool</title>
+  <title>Tool Copy Truyện</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
-    <h1>ZingTruyện Copy Tool</h1>
+    <h1>Tool Copy Truyện</h1>
 
     <div class="keyword-row">
       <div class="input-group">
         <label for="startInput">Từ khóa bắt đầu:</label>
-        <input type="text" id="startInput" placeholder="VD: 230" aria-describedby="startHelp" />
+        <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
         <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
       </div>
       <div class="input-group">
         <label for="endInput">Từ khóa kết thúc:</label>
-        <input type="text" id="endInput" placeholder="VD: 231" aria-describedby="endHelp" />
+        <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
         <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
       </div>
     </div>
 
     <div class="content-row">
       <div class="textarea-group">
-        <label for="inputText">Dán nội dung từ zingtruyen.store:</label>
-        <textarea id="inputText" placeholder="Dán nội dung đã sao chép từ zingtruyen.store (Ctrl+A, Ctrl+C)" aria-describedby="inputHelp"></textarea>
-        <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép từ trang zingtruyen.store</p>
+        <label for="inputText">Dán nội dung ở đây</label>
+        <textarea id="inputText" placeholder="Tìm kiếm văn bản:" aria-describedby="inputHelp"></textarea>
+        <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép ở đây...</p>
         <div class="button-row">
           <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
         </div>
@@ -38,7 +38,7 @@
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
         <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
         <div class="button-row">
-          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
+          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
         </div>
       </div>
     </div>
