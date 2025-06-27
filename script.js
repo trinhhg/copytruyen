@@ -28,7 +28,8 @@ document.getElementById("extractBtn").addEventListener("click", () => {
       return;
     }
 
-    const result = inputText.slice(startIndex + startText.length, endIndex).trim();
+    // Bao gồm từ khóa bắt đầu, dừng trước từ khóa kết thúc
+    const result = inputText.slice(startIndex, endIndex).trim();
     output.value = result;
   } catch (error) {
     output.value = "🚫 Lỗi khi xử lý nội dung: " + error.message;
