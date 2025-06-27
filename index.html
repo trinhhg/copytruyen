@@ -10,29 +10,36 @@
   <div class="container">
     <h1>ZingTruyện Copy Tool</h1>
 
-    <label for="linkInput">Link chương từ zingtruyen.store:</label>
-    <input type="text" id="linkInput" placeholder="https://zingtruyen.store/..." aria-describedby="linkHelp" />
-    <p id="linkHelp" class="sr-only">Nhập URL chương từ zingtruyen.store</p>
-
     <div class="row">
       <div class="half">
-        <label for="startInput">Bắt đầu (VD: Chương 21):</label>
-        <input type="text" id="startInput" placeholder="Chương 21" aria-describedby="startHelp" />
+        <label for="startInput">Từ khóa bắt đầu (VD: Chương 230):</label>
+        <input type="text" id="startInput" placeholder="Chương 230" aria-describedby="startHelp" />
         <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
       </div>
       <div class="half">
-        <label for="endInput">Kết thúc (VD: Chương 22):</label>
-        <input type="text" id="endInput" placeholder="Chương 22" aria-describedby="endHelp" />
+        <label for="endInput">Từ khóa kết thúc (VD: Chương 231):</label>
+        <input type="text" id="endInput" placeholder="Chương 231" aria-describedby="endHelp" />
         <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
       </div>
     </div>
 
-    <textarea id="output" rows="20" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
-    <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
-
-    <div class="button-row">
-      <button id="extractBtn" aria-label="Lấy nội dung chương">Lấy nội dung</button>
-      <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
+    <div class="row">
+      <div class="half">
+        <label for="inputText">Dán nội dung từ zingtruyen.store:</label>
+        <textarea id="inputText" rows="20" placeholder="Dán nội dung đã sao chép từ zingtruyen.store (Ctrl+A, Ctrl+C)" aria-describedby="inputHelp"></textarea>
+        <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép từ trang zingtruyen.store</p>
+        <div class="button-row">
+          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
+        </div>
+      </div>
+      <div class="half">
+        <label for="output">Kết quả trích xuất:</label>
+        <textarea id="output" rows="20" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
+        <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
+        <div class="button-row">
+          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép kết quả</button>
+        </div>
+      </div>
     </div>
   </div>
 
