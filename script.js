@@ -1,13 +1,14 @@
-// Hàm đếm từ giống Microsoft Word (tách bởi dấu cách, dấu chấm câu, bỏ khoảng trắng thừa)
+// Hàm đếm từ giống Microsoft Word (tách bởi dấu cách, dấu chấm câu, bỏ khoảng trắng thừa, điều chỉnh để chính xác hơn)
 function countWords(text) {
   if (!text) return 0;
-  // Loại bỏ khoảng trắng thừa và tách theo dấu cách, dấu chấm, dấu phẩy, v.v.
-  const cleanedText = text.replace(/\s+/g, ' ').trim();
+  // Loại bỏ khoảng trắng thừa và tách theo dấu cách, dấu chấm, dấu phẩy, v.v., xử lý ký tự đặc biệt tiếng Việt
+  const cleanedText = text.replace(/[\s\uFEFF\xA0]+/g, ' ').trim(); // Xử lý cả non-breaking space và ký tự không mong muốn
   if (!cleanedText) return 0;
-  const words = cleanedText.split(/\s+|[,.;!?]/).filter(word => word.length > 0);
+  const words = cleanedText.split(/[,\.;!?()\s]+/).filter(word => word.length > 0);
   return words.length;
 }
 
+// Cập nhật bộ đếm từ khi trích xuất
 document.getElementById("extractBtn").addEventListener("click", () => {
   const inputText = document.getElementById("inputText").value.trim();
   const startText = document.getElementById("startInput").value.trim().toLowerCase(); // Không phân biệt hoa/thường
