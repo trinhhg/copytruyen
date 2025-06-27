@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tool Copy Truyện</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
@@ -36,10 +36,11 @@
       <div class="textarea-group">
         <label for="output">Kết quả trích xuất:</label>
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
-        <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
+        <p id="outputWordCount" class="word-count">Words: 0</p>
         <div class="button-row">
           <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
         </div>
+        <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
       </div>
     </div>
   </div>
