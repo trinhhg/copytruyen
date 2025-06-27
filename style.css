@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -30,6 +30,7 @@ h1 {
 
 .keyword-row {
   display: flex;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 20px;
 }
@@ -63,7 +64,7 @@ input:focus {
 
 .content-row {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Sửa lỗi từ "1 Cromer" thành "1fr 1fr" */
+  grid-template-columns: 1fr 1fr;
   gap: 12px;
   margin-bottom: 20px;
 }
@@ -95,11 +96,11 @@ textarea:focus {
 .button-row {
   display: flex;
   justify-content: center;
-  gap: 12px;
 }
 
 button {
-  padding: 8px 20px;
+  width: 100%;
+  padding: 8px;
   background: #2b6cb0;
   color: #ffffff;
   border: none;
@@ -138,11 +139,13 @@ button:disabled {
 
   .keyword-row {
     flex-direction: column;
+    align-items: center;
     gap: 10px;
   }
 
   .input-group {
     flex: 1;
+    max-width: 300px;
   }
 
   .content-row {
@@ -152,5 +155,9 @@ button:disabled {
 
   textarea {
     max-height: 300px;
+  }
+
+  button {
+    max-width: 300px;
   }
 }
