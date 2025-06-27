@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Roboto', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -93,9 +93,17 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
 }
 
+.word-count {
+  font-size: 0.75rem;
+  color: #666;
+  margin: 5px 0;
+  text-align: center;
+}
+
 .button-row {
   display: flex;
   justify-content: center;
+  margin-top: 10px; /* Khoảng cách 10px giữa textarea và nút */
 }
 
 button {
@@ -155,9 +163,3 @@ button:disabled {
 
   textarea {
     max-height: 300px;
-  }
-
-  button {
-    max-width: 300px;
-  }
-}
