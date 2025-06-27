@@ -7,7 +7,7 @@ document.getElementById("extractBtn").addEventListener("click", () => {
 
   // Kiểm tra đầu vào
   if (!inputText) {
-    output.value = "🚫 Vui lòng dán nội dung từ zingtruyen.store.";
+    output.value = "🚫 Vui lòng nhập nội dung vào ô bên trái";
     return;
   }
   if (!startText || !endText) {
