@@ -1,13 +1,13 @@
-document.getElementById("extractBtn").addEventListener("click", async () => {
-  const link = document.getElementById("linkInput").value.trim();
+document.getElementById("extractBtn").addEventListener("click", () => {
+  const inputText = document.getElementById("inputText").value.trim();
   const startText = document.getElementById("startInput").value.trim();
   const endText = document.getElementById("endInput").value.trim();
   const output = document.getElementById("output");
   const extractBtn = document.getElementById("extractBtn");
 
   // Kiểm tra đầu vào
-  if (!link.includes("zingtruyen.store")) {
-    output.value = "🚫 Vui lòng nhập link hợp lệ từ zingtruyen.store.";
+  if (!inputText) {
+    output.value = "🚫 Vui lòng dán nội dung từ zingtruyen.store.";
     return;
   }
   if (!startText || !endText) {
@@ -15,32 +15,23 @@ document.getElementById("extractBtn").addEventListener("click", async () => {
     return;
   }
 
-  // Vô hiệu hóa nút khi đang tải
+  // Vô hiệu hóa nút khi xử lý
   extractBtn.disabled = true;
-  output.value = "⏳ Đang tải nội dung...";
+  output.value = "⏳ Đang xử lý nội dung...";
 
   try {
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(link);
-    const response = await fetch(proxyUrl);
-    if (!response.ok) throw new Error("Phản hồi mạng không ổn định");
-
-    const data = await response.json();
-    const parser = new DOMParser();
-    const doc = parser.parseFromString(data.contents, "text/html");
-    const text = doc.body.innerText;
-
-    const startIndex = text.indexOf(startText);
-    const endIndex = text.indexOf(endText, startIndex + 1);
+    const startIndex = inputText.indexOf(startText);
+    const endIndex = inputText.indexOf(endText, startIndex + 1);
 
     if (startIndex === -1 || endIndex === -1) {
       output.value = "❌ Không tìm thấy từ khóa. Vui lòng kiểm tra lại.";
       return;
     }
 
-    const result = text.slice(startIndex + startText.length, endIndex).trim();
+    const result = inputText.slice(startIndex + startText.length, endIndex).trim();
     output.value = result;
   } catch (error) {
-    output.value = "🚫 Lỗi: Không thể tải nội dung từ link. Có thể bị chặn hoặc sai link.";
+    output.value = "🚫 Lỗi khi xử lý nội dung: " + error.message;
   } finally {
     extractBtn.disabled = false;
   }
