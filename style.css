@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  max-width: 800px; /* Thu hẹp chiều ngang */
+  max-width: 800px;
   margin: auto;
   background: #ffffff;
   padding: 20px;
@@ -27,16 +27,27 @@ h1 {
   color: #1a3c34;
 }
 
+.keyword-section {
+  margin-bottom: 20px;
+}
+
+.keyword-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: #444;
+}
+
 .keyword-row {
   display: flex;
   justify-content: space-between;
   gap: 10px;
-  margin-bottom: 20px;
 }
 
 .keyword-group {
   flex: 1;
-  max-width: 48%; /* Đảm bảo hai ô nằm ngang và đủ dài */
+  max-width: 48%;
 }
 
 label {
@@ -53,30 +64,30 @@ input {
   border: 1px solid #d0d5dd;
   font-size: 0.85rem;
   background: #f9fafb;
-  border-radius: 0; /* Góc vuông */
+  border-radius: 0;
   height: 32px;
 }
 
 input:focus {
   outline: none;
-  border-color: #00AEEF;
-  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .clear-all-btn {
   padding: 6px 12px;
-  background: #DC3545; /* Màu đỏ cho nút xóa */
+  background: #DC3545;
   color: #ffffff;
   border: none;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 0; /* Góc vuông */
+  border-radius: 0;
   height: 32px;
 }
 
 .clear-all-btn:hover {
-  background: #C82333; /* Màu đỏ đậm hơn khi hover */
+  background: #C82333;
 }
 
 .content-row {
@@ -101,17 +112,21 @@ textarea {
   max-height: 350px;
   min-height: 200px;
   overflow-y: auto;
-  border-radius: 0; /* Góc vuông */
+  border-radius: 0;
+}
+
+#output {
+  readonly: true; /* Chặn nhập liệu */
 }
 
 textarea:focus {
   outline: none;
-  border-color: #00AEEF;
-  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
+  border-color: #007BFF;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
 .textarea-group label {
-  font-size: 1rem; /* Tăng font chữ tiêu đề */
+  font-size: 1rem;
   font-weight: 600;
   margin-bottom: 6px;
 }
@@ -128,20 +143,20 @@ textarea:focus {
 }
 
 button {
-  width: 100%; /* Nút dài theo ô văn bản */
+  width: 100%;
   padding: 8px;
-  background: #00AEEF; /* Màu xanh giống ảnh */
+  background: #007BFF; /* Xanh dương đậm hơn */
   color: #ffffff;
   border: none;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
-  border-radius: 0; /* Góc vuông */
+  border-radius: 0;
 }
 
 button:hover {
-  background: #0097D1; /* Màu xanh đậm hơn khi hover */
+  background: #0056B3; /* Xanh dương đậm hơn khi hover */
 }
 
 button:disabled {
