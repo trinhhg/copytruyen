@@ -24,7 +24,8 @@ document.getElementById("extractBtn").addEventListener("click", () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#ff4444",
+      backgroundColor: "#FF0000", // Đỏ tươi đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
     return;
@@ -35,7 +36,8 @@ document.getElementById("extractBtn").addEventListener("click", () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#ff4444",
+      backgroundColor: "#FF0000", // Đỏ tươi đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
     return;
@@ -56,7 +58,8 @@ document.getElementById("extractBtn").addEventListener("click", () => {
         duration: 2000,
         gravity: "top",
         position: "right",
-        backgroundColor: "#ff4444",
+        backgroundColor: "#FF0000", // Đỏ tươi đậm
+        style: { borderRadius: "8px" }, // Bo góc
         stopOnFocus: true,
       }).showToast();
       return;
@@ -71,7 +74,8 @@ document.getElementById("extractBtn").addEventListener("click", () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#ff4444",
+      backgroundColor: "#FF0000", // Đỏ tươi đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
   } finally {
@@ -89,7 +93,8 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#ff4444",
+      backgroundColor: "#FF0000", // Đỏ tươi đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
     return;
@@ -102,7 +107,8 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#28A745",
+      backgroundColor: "#1A5D1A", // Xanh lá đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
   } catch (error) {
@@ -111,7 +117,8 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       duration: 2000,
       gravity: "top",
       position: "right",
-      backgroundColor: "#ff4444",
+      backgroundColor: "#FF0000", // Đỏ tươi đậm
+      style: { borderRadius: "8px" }, // Bo góc
       stopOnFocus: true,
     }).showToast();
   }
