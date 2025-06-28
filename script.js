@@ -1,9 +1,17 @@
-// Hàm đếm từ giống Microsoft Word (tách bởi dấu cách, dấu chấm câu, bỏ khoảng trắng thừa)
+// Hàm đếm từ giống Microsoft Word (dựa trên tài liệu và thực tiễn)
+// Microsoft Word đếm từ bằng cách tách dựa trên ký tự phân cách (space, tab, dấu câu)
+// và loại bỏ ký tự đặc biệt, giữ các từ có ý nghĩa
 function countWords(text) {
   if (!text) return 0;
-  const cleanedText = text.replace(/[\s\uFEFF\xA0]+/g, ' ').trim();
+  // Loại bỏ khoảng trắng thừa và ký tự không mong muốn
+  const cleanedText = text
+    .replace(/[\uFEFF\xA0]+/g, ' ') // Xóa non-breaking space và BOM
+    .replace(/[^\w\s.,!?()'-]/g, ' ') // Giữ lại ký tự chữ, số, dấu câu cơ bản
+    .replace(/\s+/g, ' ') // Thay nhiều khoảng trắng bằng một khoảng
+    .trim();
   if (!cleanedText) return 0;
-  const words = cleanedText.split(/[,\.;!?()\s]+/).filter(word => word.length > 0);
+  // Tách từ dựa trên khoảng trắng và dấu câu, lọc từ có độ dài > 0
+  const words = cleanedText.split(/[\s.,!?()]+/).filter(word => word.length > 0);
   return words.length;
 }
 
@@ -65,8 +73,8 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       text: "Đã sao chép văn bản vào clipboard",
       duration: 2000,
       gravity: "top",
-      position: "center",
-      backgroundColor: "#00AEEF",
+      position: "right", // Góc phải trên
+      backgroundColor: "#28A745", // Màu xanh lá
       stopOnFocus: true,
     }).showToast();
   } catch (error) {
@@ -74,18 +82,15 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       text: "Lỗi khi sao chép: " + error.message,
       duration: 2000,
       gravity: "top",
-      position: "center",
+      position: "right",
       backgroundColor: "#ff4444",
       stopOnFocus: true,
     }).showToast();
   }
 });
 
-// Xóa từ khóa khi nhấn nút xóa
-document.getElementById("clearStart").addEventListener("click", () => {
+// Xóa tất cả từ khóa khi nhấn nút Xóa
+document.getElementById("clearAll").addEventListener("click", () => {
   document.getElementById("startInput").value = "";
-});
-
-document.getElementById("clearEnd").addEventListener("click", () => {
   document.getElementById("endInput").value = "";
 });
