@@ -43,6 +43,7 @@ h1 {
   display: flex;
   justify-content: space-between;
   gap: 10px;
+  align-items: flex-end; /* Đảm bảo nút Xóa thẳng hàng */
 }
 
 .keyword-group {
@@ -140,12 +141,18 @@ textarea:focus {
 
 .button-row {
   margin-top: 10px;
+  display: flex;
+  justify-content: flex-end; /* Lấy Sao chép làm mốc, Trích xuất bên trái */
+}
+
+#copyBtn {
+  margin-left: 10px; /* Khoảng cách giữa Trích xuất và Sao chép */
 }
 
 button {
-  width: 100%;
+  flex: 1; /* Nút dài theo ô, nhưng linh hoạt */
   padding: 8px;
-  background: #007BFF; /* Xanh dương đậm hơn */
+  background: #007BFF; /* Xanh dương đậm */
   color: #ffffff;
   border: none;
   font-size: 0.85rem;
@@ -200,8 +207,16 @@ button:disabled {
     max-height: 300px;
   }
 
-  .button-row button {
+  .button-row {
+    flex-direction: column;
+  }
+
+  #copyBtn {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  button {
     width: 100%;
-    margin: 5px 0;
   }
 }
