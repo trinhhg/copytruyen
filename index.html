@@ -6,7 +6,6 @@
   <title>Tool Copy Truyện</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Calibri:wght@400;500;600&display=swap" rel="stylesheet" />
-  <!-- Thêm Toastify cho popup thông báo -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
 </head>
 <body>
@@ -16,34 +15,31 @@
     <div class="keyword-row">
       <div class="keyword-group">
         <label for="startInput">Tìm:</label>
-        <div class="input-with-clear">
-          <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
-          <button id="clearStart" class="clear-btn" aria-label="Xóa từ khóa bắt đầu">X</button>
-        </div>
-        <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
+        <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
       </div>
       <div class="keyword-group">
         <label for="endInput">Thay bằng:</label>
-        <div class="input-with-clear">
-          <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
-          <button id="clearEnd" class="clear-btn" aria-label="Xóa từ khóa kết thúc">X</button>
-        </div>
-        <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
+        <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
       </div>
+      <button id="clearAll" class="clear-all-btn" aria-label="Xóa tất cả từ khóa">Xóa</button>
+      <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
+      <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
     </div>
 
     <div class="content-row">
       <div class="textarea-group">
-        <label for="inputText">Tìm kiếm văn bản:</label>
+        <label for="inputText">Tìm kiếm văn bản</label>
         <textarea id="inputText" placeholder="Dán nội dung ở đây..." aria-describedby="inputHelp"></textarea>
         <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép ở đây...</p>
+        <div class="button-row">
+          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
+        </div>
       </div>
       <div class="textarea-group">
-        <label for="output">Kết quả trích xuất:</label>
+        <label for="output">Kết quả trích xuất</label>
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
         <p id="outputWordCount" class="word-count">Words: 0</p>
         <div class="button-row">
-          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
           <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
         </div>
         <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
