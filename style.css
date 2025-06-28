@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+  font-family: Arial, sans-serif !important;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -147,7 +147,7 @@ textarea:focus {
 }
 
 #extractBtn {
-  margin-right: 10px; /* Đảm bảo Trích xuất thẳng hàng với Sao chép */
+  margin-right: 20px; /* Đảm bảo Trích xuất thẳng hàng với Sao chép */
 }
 
 button {
