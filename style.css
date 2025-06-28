@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif !important;
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -41,14 +41,14 @@ h1 {
 
 .keyword-row {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 10px;
-  align-items: flex-end; /* Đảm bảo nút Xóa thẳng hàng */
+  align-items: flex-end;
 }
 
 .keyword-group {
   flex: 1;
-  max-width: 48%;
+  max-width: 40%; /* Giảm để không chiếm hết diện tích */
 }
 
 label {
@@ -85,6 +85,7 @@ input:focus {
   cursor: pointer;
   border-radius: 0;
   height: 32px;
+  margin-left: 10px; /* Tạo khoảng cách với ô cuối */
 }
 
 .clear-all-btn:hover {
@@ -117,7 +118,7 @@ textarea {
 }
 
 #output {
-  readonly: true; /* Chặn nhập liệu */
+  readonly: true;
 }
 
 textarea:focus {
@@ -142,17 +143,17 @@ textarea:focus {
 .button-row {
   margin-top: 10px;
   display: flex;
-  justify-content: flex-end; /* Lấy Sao chép làm mốc, Trích xuất bên trái */
+  justify-content: flex-end;
 }
 
-#copyBtn {
-  margin-left: 10px; /* Khoảng cách giữa Trích xuất và Sao chép */
+#extractBtn {
+  margin-right: 10px; /* Đảm bảo Trích xuất thẳng hàng với Sao chép */
 }
 
 button {
-  flex: 1; /* Nút dài theo ô, nhưng linh hoạt */
+  flex: 1;
   padding: 8px;
-  background: #007BFF; /* Xanh dương đậm */
+  background: #007BFF;
   color: #ffffff;
   border: none;
   font-size: 0.85rem;
@@ -163,7 +164,7 @@ button {
 }
 
 button:hover {
-  background: #0056B3; /* Xanh dương đậm hơn khi hover */
+  background: #0056B3;
 }
 
 button:disabled {
@@ -211,9 +212,9 @@ button:disabled {
     flex-direction: column;
   }
 
-  #copyBtn {
-    margin-left: 0;
-    margin-top: 10px;
+  #extractBtn {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 
   button {
