@@ -16,7 +16,6 @@ body {
   margin: auto;
   background: #ffffff;
   padding: 20px;
-  border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -35,8 +34,8 @@ h1 {
   margin-bottom: 20px;
 }
 
-.input-group {
-  flex: 0 0 150px;
+.keyword-group {
+  flex: 0 0 200px; /* Vuông vức giống Tìm và Thay thế */
 }
 
 label {
@@ -47,19 +46,42 @@ label {
   color: #444;
 }
 
+.input-with-clear {
+  display: flex;
+  align-items: center;
+  border: 1px solid #d0d5dd;
+  background: #f9fafb;
+  height: 32px; /* Chiều cao cố định giống Tìm và Thay thế */
+}
+
 input {
   width: 100%;
-  padding: 8px;
-  border: 1px solid #d0d5dd;
-  border-radius: 6px;
+  padding: 6px 8px;
+  border: none;
   font-size: 0.85rem;
-  background: #f9fafb;
+  background: transparent;
+  height: 100%;
 }
 
 input:focus {
   outline: none;
-  border-color: #2b6cb0;
-  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+  box-shadow: none;
+}
+
+.clear-btn {
+  padding: 0 8px;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.clear-btn:hover {
+  color: #000;
 }
 
 .content-row {
@@ -72,56 +94,58 @@ input:focus {
 .textarea-group {
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Đảm bảo các phần tử con căn chỉnh đều */
 }
 
 textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #d0d5dd;
-  border-radius: 6px;
   font-size: 0.85rem;
   background: #f9fafb;
   resize: vertical;
   max-height: 350px;
   min-height: 200px;
   overflow-y: auto;
+  border-radius: 0; /* Góc vuông */
 }
 
 textarea:focus {
   outline: none;
-  border-color: #2b6cb0;
-  box-shadow: 0 0 0 3px rgba(43, 108, 176, 0.1);
+  border-color: #00AEEF;
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
 }
 
 .word-count {
   font-size: 0.75rem;
   color: #666;
   text-align: center;
-  padding: 2px 0; /* Thêm padding nhẹ để đẹp hơn */
+  padding: 2px 0;
 }
 
 .button-row {
   display: flex;
-  justify-content: center;
-  align-items: center; /* Căn giữa nút theo chiều dọc */
+  justify-content: flex-start; /* Dùng Sao chép làm mốc, Trích xuất bên trái */
+  margin-top: 10px;
 }
 
 button {
-  width: 100%;
-  padding: 8px;
-  background: #2b6cb0;
+  padding: 8px 16px;
+  background: #00AEEF; /* Màu xanh giống ảnh */
   color: #ffffff;
   border: none;
-  border-radius: 6px;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
+  margin-right: 10px; /* Khoảng cách giữa nút */
+}
+
+#copyBtn {
+  margin-left: auto; /* Đẩy Sao chép về bên phải làm mốc */
 }
 
 button:hover {
-  background: #1a4971;
+  background: #0097D1; /* Màu xanh đậm hơn khi hover */
 }
 
 button:disabled {
@@ -152,7 +176,7 @@ button:disabled {
     gap: 10px;
   }
 
-  .input-group {
+  .keyword-group {
     flex: 1;
     max-width: 300px;
   }
@@ -166,7 +190,6 @@ button:disabled {
     max-height: 300px;
   }
 
-  button {
-    max-width: 300px;
+  .button-row {
+    flex-direction: column;
   }
-}
