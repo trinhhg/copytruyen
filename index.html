@@ -12,16 +12,19 @@
   <div class="container">
     <h1>Tool Copy Truyện</h1>
 
-    <div class="keyword-row">
-      <div class="keyword-group">
-        <label for="startInput">Tìm:</label>
-        <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
+    <div class="keyword-section">
+      <label class="keyword-label">Nhập từ khóa:</label>
+      <div class="keyword-row">
+        <div class="keyword-group">
+          <label for="startInput">Tìm:</label>
+          <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
+        </div>
+        <div class="keyword-group">
+          <label for="endInput">Thay bằng:</label>
+          <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
+        </div>
+        <button id="clearAll" class="clear-all-btn" aria-label="Xóa tất cả từ khóa">Xóa</button>
       </div>
-      <div class="keyword-group">
-        <label for="endInput">Thay bằng:</label>
-        <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
-      </div>
-      <button id="clearAll" class="clear-all-btn" aria-label="Xóa tất cả từ khóa">Xóa</button>
       <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
       <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
     </div>
@@ -37,7 +40,7 @@
       </div>
       <div class="textarea-group">
         <label for="output">Kết quả trích xuất</label>
-        <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp"></textarea>
+        <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp" readonly></textarea>
         <p id="outputWordCount" class="word-count">Words: 0</p>
         <div class="button-row">
           <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
