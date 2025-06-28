@@ -12,7 +12,7 @@ body {
 }
 
 .container {
-  max-width: 960px;
+  max-width: 800px; /* Thu hẹp chiều ngang */
   margin: auto;
   background: #ffffff;
   padding: 20px;
@@ -29,13 +29,14 @@ h1 {
 
 .keyword-row {
   display: flex;
-  justify-content: center;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
 .keyword-group {
-  flex: 0 0 200px; /* Vuông vức giống Tìm và Thay thế */
+  flex: 1;
+  max-width: 48%; /* Đảm bảo hai ô nằm ngang và đủ dài */
 }
 
 label {
@@ -46,48 +47,42 @@ label {
   color: #444;
 }
 
-.input-with-clear {
-  display: flex;
-  align-items: center;
-  border: 1px solid #d0d5dd;
-  background: #f9fafb;
-  height: 32px; /* Chiều cao cố định giống Tìm và Thay thế */
-}
-
 input {
   width: 100%;
   padding: 6px 8px;
-  border: none;
+  border: 1px solid #d0d5dd;
   font-size: 0.85rem;
-  background: transparent;
-  height: 100%;
+  background: #f9fafb;
+  border-radius: 0; /* Góc vuông */
+  height: 32px;
 }
 
 input:focus {
   outline: none;
-  box-shadow: none;
+  border-color: #00AEEF;
+  box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
 }
 
-.clear-btn {
-  padding: 0 8px;
-  background: none;
+.clear-all-btn {
+  padding: 6px 12px;
+  background: #DC3545; /* Màu đỏ cho nút xóa */
+  color: #ffffff;
   border: none;
-  font-size: 1rem;
-  color: #666;
+  font-size: 0.85rem;
+  font-weight: 500;
   cursor: pointer;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  border-radius: 0; /* Góc vuông */
+  height: 32px;
 }
 
-.clear-btn:hover {
-  color: #000;
+.clear-all-btn:hover {
+  background: #C82333; /* Màu đỏ đậm hơn khi hover */
 }
 
 .content-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
@@ -115,6 +110,12 @@ textarea:focus {
   box-shadow: 0 0 0 3px rgba(0, 174, 239, 0.1);
 }
 
+.textarea-group label {
+  font-size: 1rem; /* Tăng font chữ tiêu đề */
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
 .word-count {
   font-size: 0.75rem;
   color: #666;
@@ -123,13 +124,12 @@ textarea:focus {
 }
 
 .button-row {
-  display: flex;
-  justify-content: flex-start; /* Dùng Sao chép làm mốc, Trích xuất bên trái */
   margin-top: 10px;
 }
 
 button {
-  padding: 8px 16px;
+  width: 100%; /* Nút dài theo ô văn bản */
+  padding: 8px;
   background: #00AEEF; /* Màu xanh giống ảnh */
   color: #ffffff;
   border: none;
@@ -137,11 +137,7 @@ button {
   font-weight: 500;
   cursor: pointer;
   transition: background 0.2s;
-  margin-right: 10px; /* Khoảng cách giữa nút */
-}
-
-#copyBtn {
-  margin-left: auto; /* Đẩy Sao chép về bên phải làm mốc */
+  border-radius: 0; /* Góc vuông */
 }
 
 button:hover {
@@ -172,13 +168,12 @@ button:disabled {
 
   .keyword-row {
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
   }
 
   .keyword-group {
-    flex: 1;
-    max-width: 300px;
+    max-width: 100%;
   }
 
   .content-row {
@@ -190,6 +185,8 @@ button:disabled {
     max-height: 300px;
   }
 
-  .button-row {
-    flex-direction: column;
+  .button-row button {
+    width: 100%;
+    margin: 5px 0;
   }
+}
