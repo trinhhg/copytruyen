@@ -1,6 +1,4 @@
 // Hàm đếm từ giống Microsoft Word (dựa trên tài liệu và thực tiễn)
-// Microsoft Word đếm từ bằng cách tách dựa trên ký tự phân cách (space, tab, dấu câu)
-// và loại bỏ ký tự đặc biệt, giữ các từ có ý nghĩa
 function countWords(text) {
   if (!text) return 0;
   // Loại bỏ khoảng trắng thừa và ký tự không mong muốn
@@ -73,8 +71,8 @@ document.getElementById("copyBtn").addEventListener("click", async () => {
       text: "Đã sao chép văn bản vào clipboard",
       duration: 2000,
       gravity: "top",
-      position: "right", // Góc phải trên
-      backgroundColor: "#28A745", // Màu xanh lá
+      position: "right",
+      backgroundColor: "#28A745",
       stopOnFocus: true,
     }).showToast();
   } catch (error) {
