@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+  font-family: 'Calibri' , Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -79,18 +79,19 @@ h1 {
 
 .mode-detail {
   margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  width: 100%; /* Kích thước bằng ô Tìm kiếm văn bản */
+  max-width: 100%; /* Đảm bảo không vượt quá container */
 }
 
 .mode-textarea {
+  width: 100%; /* Kích thước bằng ô Tìm kiếm văn bản */
   padding: 10px;
   border: 1px solid #d0d5dd;
   font-size: 0.85rem;
   background: #f9fafb;
   border-radius: 4px; /* Bo góc nhẹ */
   resize: vertical;
+  min-height: 200px;
 }
 
 .content-row {
