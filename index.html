@@ -10,23 +10,30 @@
 </head>
 <body>
   <div class="container">
-    <h1>Tool Copy Truyện</h1>
+    <h1>Tool SP Edit By Trịnh Hg</h1>
 
     <div class="keyword-section">
       <label class="keyword-label">Nhập từ khóa:</label>
       <div class="keyword-row">
-        <div class="keyword-group">
-          <label for="startInput">Tìm:</label>
-          <input type="text" id="startInput" placeholder="VD: chương..." aria-describedby="startHelp" />
-        </div>
-        <div class="keyword-group">
-          <label for="endInput">Thay bằng:</label>
-          <input type="text" id="endInput" placeholder="VD: chương..." aria-describedby="endHelp" />
-        </div>
-        <button id="clearAll" class="clear-all-btn" aria-label="Xóa tất cả từ khóa">Xóa</button>
+        <input type="text" class="keyword-input" placeholder="Từ khóa bắt đầu..." aria-describedby="startHelp" />
+        <input type="text" class="keyword-input" placeholder="Từ khóa kết thúc..." aria-describedby="endHelp" />
+        <button id="clearKeywords" class="action-btn red">Xóa</button>
       </div>
       <p id="startHelp" class="sr-only">Nhập từ khóa bắt đầu của nội dung</p>
       <p id="endHelp" class="sr-only">Nhập từ khóa kết thúc của nội dung</p>
+    </div>
+
+    <div class="mode-section">
+      <label for="modeSelect">Chế độ xưng hô:</label>
+      <select id="modeSelect" class="mode-select"></select>
+      <button id="addMode" class="action-btn blue">Thêm</button>
+      <button id="removeMode" class="action-btn red">Xóa</button>
+      <button id="detailMode" class="action-btn blue">Chi tiết</button>
+      <div id="modeDetail" class="mode-detail" style="display: none;">
+        <textarea id="modeText" placeholder="Nhập xưng hô..." class="mode-textarea"></textarea>
+        <button id="toggleMode" class="action-btn blue">Thu gọn</button>
+        <button id="attachMode" class="action-btn green">Gắn</button>
+      </div>
     </div>
 
     <div class="content-row">
@@ -35,7 +42,7 @@
         <textarea id="inputText" placeholder="Dán nội dung ở đây..." aria-describedby="inputHelp"></textarea>
         <p id="inputHelp" class="sr-only">Dán toàn bộ nội dung sao chép ở đây...</p>
         <div class="button-row">
-          <button id="extractBtn" aria-label="Trích xuất nội dung chương">Trích xuất</button>
+          <button id="extractBtn" class="action-btn blue">Trích xuất</button>
         </div>
       </div>
       <div class="textarea-group">
@@ -43,7 +50,7 @@
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp" readonly></textarea>
         <p id="outputWordCount" class="word-count">Words: 0</p>
         <div class="button-row">
-          <button id="copyBtn" aria-label="Sao chép nội dung vào clipboard">Sao chép</button>
+          <button id="copyBtn" class="action-btn blue">Sao chép</button>
         </div>
         <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
       </div>
