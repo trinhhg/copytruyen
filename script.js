@@ -1,16 +1,3 @@
-// Hàm đếm từ giống Microsoft Word
-function countWords(text) {
-  if (!text) return 0;
-  const cleanedText = text
-    .replace(/[\uFEFF\xA0]+/g, ' ')
-    .replace(/[^\w\s.,!?()'-]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim();
-  if (!cleanedText) return 0;
-  const words = cleanedText.split(/[\s.,!?()]+/).filter(word => word.length > 0);
-  return words.length;
-}
-
 // Lấy và lưu chế độ xưng hô từ localStorage
 function loadModes() {
   let modes = JSON.parse(localStorage.getItem('modes')) || ['Mặc định'];
@@ -39,10 +26,13 @@ document.getElementById('addMode').addEventListener('click', () => {
     modes.push(newMode);
     saveModes(modes);
     loadModes();
+    document.getElementById('modeDetail').style.display = 'flex';
+    document.getElementById('toggleMode').style.display = 'inline-block';
+    document.getElementById('attachMode').style.display = 'inline-block';
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#1A5D1A',
       style: { borderRadius: '8px' },
@@ -52,7 +42,7 @@ document.getElementById('addMode').addEventListener('click', () => {
     Toastify({
       text: 'Chế độ đã tồn tại!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -66,12 +56,13 @@ document.getElementById('removeMode').addEventListener('click', () => {
   const mode = select.value;
   if (modes.length > 1 && confirm(`Xác nhận xóa chế độ "${mode}"?`)) {
     modes = modes.filter(m => m !== mode);
+    localStorage.removeItem(mode);
     saveModes(modes);
     loadModes();
     Toastify({
       text: 'Đã xóa chế độ!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#1A5D1A',
       style: { borderRadius: '8px' },
@@ -82,7 +73,8 @@ document.getElementById('removeMode').addEventListener('click', () => {
 
 document.getElementById('detailMode').addEventListener('click', () => {
   document.getElementById('modeDetail').style.display = 'flex';
-  document.getElementById('toggleMode').textContent = 'Thu gọn';
+  document.getElementById('toggleMode').style.display = 'inline-block';
+  document.getElementById('attachMode').style.display = 'inline-block';
 });
 
 document.getElementById('toggleMode').addEventListener('click', () => {
@@ -103,7 +95,7 @@ document.getElementById('attachMode').addEventListener('click', () => {
     Toastify({
       text: 'Đã gắn xưng hô!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#1A5D1A',
       style: { borderRadius: '8px' },
@@ -113,7 +105,7 @@ document.getElementById('attachMode').addEventListener('click', () => {
     Toastify({
       text: 'Vui lòng nhập xưng hô!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -134,7 +126,7 @@ document.getElementById('extractBtn').addEventListener('click', () => {
     Toastify({
       text: 'Vui lòng nhập nội dung vào ô Tìm kiếm văn bản!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -146,7 +138,7 @@ document.getElementById('extractBtn').addEventListener('click', () => {
     Toastify({
       text: 'Vui lòng nhập cả hai từ khóa!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -157,7 +149,6 @@ document.getElementById('extractBtn').addEventListener('click', () => {
 
   extractBtn.disabled = true;
   output.value = '';
-  document.getElementById('outputWordCount').textContent = 'Words: 0';
 
   try {
     const lowerCaseInput = inputText.toLowerCase();
@@ -168,7 +159,7 @@ document.getElementById('extractBtn').addEventListener('click', () => {
       Toastify({
         text: 'Không tìm thấy từ khóa. Vui lòng kiểm tra lại!',
         duration: 2500,
-        gravity: 'bottom',
+        gravity: 'top',
         position: 'right',
         backgroundColor: '#DC3545',
         style: { borderRadius: '8px' },
@@ -180,12 +171,11 @@ document.getElementById('extractBtn').addEventListener('click', () => {
     const result = inputText.slice(startIndex, endIndex + endKeyword.length).trim();
     const modeText = localStorage.getItem(document.getElementById('modeSelect').value) || '';
     output.value = result + (modeText ? '\n\n' + modeText : '');
-    document.getElementById('outputWordCount').textContent = `Words: ${countWords(output.value)}`;
   } catch (error) {
     Toastify({
       text: 'Lỗi khi xử lý nội dung: ' + error.message,
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -205,7 +195,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
     Toastify({
       text: 'Không có nội dung để sao chép!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -219,7 +209,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
     Toastify({
       text: 'Đã sao chép!',
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#1A5D1A',
       style: { borderRadius: '8px' },
@@ -229,7 +219,7 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
     Toastify({
       text: 'Lỗi khi sao chép: ' + error.message,
       duration: 2500,
-      gravity: 'bottom',
+      gravity: 'top',
       position: 'right',
       backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
@@ -242,5 +232,4 @@ document.getElementById('copyBtn').addEventListener('click', async () => {
 document.getElementById('clearKeywords').addEventListener('click', () => {
   document.querySelectorAll('.keyword-input').forEach(input => input.value = '');
   document.getElementById('output').value = '';
-  document.getElementById('outputWordCount').textContent = 'Words: 0';
 });
