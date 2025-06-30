@@ -29,10 +29,10 @@
       <button id="addMode" class="action-btn blue">Thêm</button>
       <button id="removeMode" class="action-btn red">Xóa</button>
       <button id="detailMode" class="action-btn blue">Chi tiết</button>
+      <button id="toggleMode" class="action-btn blue" style="display: none;">Thu gọn</button>
+      <button id="attachMode" class="action-btn green" style="display: none;">Gắn</button>
       <div id="modeDetail" class="mode-detail" style="display: none;">
         <textarea id="modeText" placeholder="Nhập xưng hô..." class="mode-textarea"></textarea>
-        <button id="toggleMode" class="action-btn blue">Thu gọn</button>
-        <button id="attachMode" class="action-btn green">Gắn</button>
       </div>
     </div>
 
@@ -48,11 +48,10 @@
       <div class="textarea-group">
         <label for="output">Kết quả trích xuất</label>
         <textarea id="output" placeholder="Nội dung chương sẽ hiển thị ở đây..." aria-describedby="outputHelp" readonly></textarea>
-        <p id="outputWordCount" class="word-count">Words: 0</p>
+        <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
         <div class="button-row">
           <button id="copyBtn" class="action-btn blue">Sao chép</button>
         </div>
-        <p id="outputHelp" class="sr-only">Nội dung chương truyện được trích xuất sẽ hiển thị ở đây</p>
       </div>
     </div>
   </div>
