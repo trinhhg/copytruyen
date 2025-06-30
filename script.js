@@ -1,12 +1,14 @@
 // Lấy và lưu chế độ xưng hô từ localStorage
 function loadModes() {
   let modes = JSON.parse(localStorage.getItem('modes')) || ['Mặc định'];
+  if (!modes.includes('Mặc định')) modes.unshift('Mặc định'); // Đảm bảo "Mặc định" luôn có
   const select = document.getElementById('modeSelect');
   select.innerHTML = '';
   modes.forEach(mode => {
     const option = document.createElement('option');
     option.value = mode;
     option.textContent = mode;
+    if (mode === 'Mặc định') option.disabled = true; // Không cho xóa "Mặc định"
     select.appendChild(option);
   });
   return modes;
@@ -17,7 +19,14 @@ function saveModes(modes) {
 }
 
 let modes = loadModes();
-document.getElementById('modeSelect').value = modes[0];
+document.getElementById('modeSelect').value = 'Mặc định';
+
+// Cập nhật nội dung ô xưng hô khi thay đổi chế độ
+document.getElementById('modeSelect').addEventListener('change', () => {
+  const mode = document.getElementById('modeSelect').value;
+  const modeText = localStorage.getItem(mode) || '';
+  document.getElementById('modeText').value = modeText;
+});
 
 // Xử lý các nút chế độ
 document.getElementById('addMode').addEventListener('click', () => {
@@ -26,8 +35,9 @@ document.getElementById('addMode').addEventListener('click', () => {
     modes.push(newMode);
     saveModes(modes);
     loadModes();
+    document.getElementById('modeSelect').value = newMode;
     document.getElementById('modeDetail').style.display = 'block';
-    document.getElementById('modeText').value = localStorage.getItem(newMode) || ''; // Lấy nội dung cũ nếu có
+    document.getElementById('modeText').value = localStorage.getItem(newMode) || ''; // Lấy nội dung cũ
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
@@ -53,7 +63,7 @@ document.getElementById('addMode').addEventListener('click', () => {
 document.getElementById('removeMode').addEventListener('click', () => {
   const select = document.getElementById('modeSelect');
   const mode = select.value;
-  if (modes.length > 1 && confirm(`Xác nhận xóa chế độ "${mode}"?`)) {
+  if (modes.length > 1 && mode !== 'Mặc định' && confirm(`Xác nhận xóa chế độ "${mode}"?`)) {
     modes = modes.filter(m => m !== mode);
     localStorage.removeItem(mode);
     saveModes(modes);
@@ -66,6 +76,16 @@ document.getElementById('removeMode').addEventListener('click', () => {
       gravity: 'top',
       position: 'right',
       backgroundColor: '#1A5D1A',
+      style: { borderRadius: '8px' },
+      stopOnFocus: true,
+    }).showToast();
+  } else if (mode === 'Mặc định') {
+    Toastify({
+      text: 'Chế độ "Mặc định" không thể xóa!',
+      duration: 2500,
+      gravity: 'top',
+      position: 'right',
+      backgroundColor: '#DC3545',
       style: { borderRadius: '8px' },
       stopOnFocus: true,
     }).showToast();
@@ -83,13 +103,13 @@ document.getElementById('toggleMode').addEventListener('click', () => {
   detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
 });
 
-document.getElementById('attachMode').addEventListener('click', () => {
+document.getElementById('saveSetting').addEventListener('click', () => {
   const modeText = document.getElementById('modeText').value.trim();
   if (modeText) {
     const mode = document.getElementById('modeSelect').value;
     localStorage.setItem(mode, modeText); // Lưu riêng cho từng chế độ
     Toastify({
-      text: 'Đã gắn xưng hô!',
+      text: 'Đã lưu cài đặt xưng hô!',
       duration: 2500,
       gravity: 'top',
       position: 'right',
