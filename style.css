@@ -80,7 +80,7 @@ h1 {
 
 .mode-detail {
   margin-top: 10px;
-  width: 100%; /* Đặt dưới nút Gắn */
+  width: 100%; /* Đặt dưới nút Lưu cài đặt */
 }
 
 .mode-textarea {
@@ -170,7 +170,7 @@ textarea:focus {
 }
 
 .green-light {
-  background: #28A745; /* Xanh nhẹ hơn */
+  background: #28A745; /* Xanh nhẹ */
   color: #ffffff;
 }
 
