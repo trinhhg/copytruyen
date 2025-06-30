@@ -21,11 +21,17 @@ function saveModes(modes) {
 let modes = loadModes();
 document.getElementById('modeSelect').value = 'Mặc định';
 
-// Cập nhật nội dung ô xưng hô khi thay đổi chế độ
+// Biến lưu nội dung tạm thời để không mất khi chuyển chế độ
+let currentModeText = '';
+
+// Cập nhật nội dung ô xưng hô khi thay đổi chế độ (chỉ đọc)
 document.getElementById('modeSelect').addEventListener('change', () => {
   const mode = document.getElementById('modeSelect').value;
-  const modeText = localStorage.getItem(mode) || '';
-  document.getElementById('modeText').value = modeText;
+  const savedText = localStorage.getItem(mode) || '';
+  document.getElementById('modeText').value = savedText; // Hiển thị nội dung lưu
+  document.getElementById('editText').value = ''; // Xóa nội dung chỉnh sửa khi chuyển
+  document.getElementById('modeDetail').style.display = 'block'; // Mở chế độ xem
+  document.getElementById('editDetail').style.display = 'none'; // Ẩn chế độ chỉnh sửa
 });
 
 // Xử lý các nút chế độ
@@ -37,7 +43,7 @@ document.getElementById('addMode').addEventListener('click', () => {
     loadModes();
     document.getElementById('modeSelect').value = newMode;
     document.getElementById('modeDetail').style.display = 'block';
-    document.getElementById('modeText').value = localStorage.getItem(newMode) || ''; // Lấy nội dung cũ
+    document.getElementById('modeText').value = localStorage.getItem(newMode) || '';
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
@@ -69,7 +75,9 @@ document.getElementById('removeMode').addEventListener('click', () => {
     saveModes(modes);
     loadModes();
     document.getElementById('modeDetail').style.display = 'none';
+    document.getElementById('editDetail').style.display = 'none';
     document.getElementById('modeText').value = '';
+    document.getElementById('editText').value = '';
     Toastify({
       text: 'Đã xóa chế độ!',
       duration: 2500,
@@ -93,21 +101,39 @@ document.getElementById('removeMode').addEventListener('click', () => {
 });
 
 document.getElementById('detailMode').addEventListener('click', () => {
-  document.getElementById('modeDetail').style.display = 'block';
   const mode = document.getElementById('modeSelect').value;
-  document.getElementById('modeText').value = localStorage.getItem(mode) || ''; // Hiển thị nội dung cũ
+  const savedText = localStorage.getItem(mode) || '';
+  document.getElementById('modeText').value = savedText; // Hiển thị nội dung lưu (read-only)
+  document.getElementById('modeDetail').style.display = 'block';
+  document.getElementById('editDetail').style.display = 'none'; // Ẩn chế độ chỉnh sửa
+});
+
+document.getElementById('editMode').addEventListener('click', () => {
+  const mode = document.getElementById('modeSelect').value;
+  const savedText = localStorage.getItem(mode) || '';
+  document.getElementById('editText').value = savedText; // Hiển thị nội dung để chỉnh sửa
+  document.getElementById('editDetail').style.display = 'block';
+  document.getElementById('modeDetail').style.display = 'none'; // Ẩn chế độ xem
 });
 
 document.getElementById('toggleMode').addEventListener('click', () => {
   const detail = document.getElementById('modeDetail');
-  detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
+  const editDetail = document.getElementById('editDetail');
+  if (detail.style.display === 'block' || editDetail.style.display === 'block') {
+    detail.style.display = 'none';
+    editDetail.style.display = 'none';
+  } else {
+    detail.style.display = 'block'; // Mặc định mở chế độ xem khi thu gọn
+  }
 });
 
 document.getElementById('saveSetting').addEventListener('click', () => {
-  const modeText = document.getElementById('modeText').value.trim();
-  if (modeText) {
+  const editText = document.getElementById('editText').value.trim();
+  if (editText) {
     const mode = document.getElementById('modeSelect').value;
-    localStorage.setItem(mode, modeText); // Lưu riêng cho từng chế độ
+    localStorage.setItem(mode, editText); // Lưu nội dung chỉnh sửa
+    document.getElementById('modeText').value = editText; // Cập nhật ô xem
+    document.getElementById('editDetail').style.display = 'none'; // Ẩn sau khi lưu
     Toastify({
       text: 'Đã lưu cài đặt xưng hô!',
       duration: 2500,
