@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: Arial, sans-serif !important;
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
   background: #f0f2f5;
   padding: 20px;
   color: #333;
@@ -46,21 +46,8 @@ h1 {
   align-items: flex-end;
 }
 
-.keyword-group {
+.keyword-input {
   flex: 1;
-  max-width: 40%; /* Giảm để không chiếm hết diện tích */
-}
-
-label {
-  display: block;
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-bottom: 6px;
-  color: #444;
-}
-
-input {
-  width: 100%;
   padding: 6px 8px;
   border: 1px solid #d0d5dd;
   font-size: 0.85rem;
@@ -69,27 +56,40 @@ input {
   height: 32px;
 }
 
-input:focus {
+.keyword-input:focus {
   outline: none;
   border-color: #007BFF;
   box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
 }
 
-.clear-all-btn {
-  padding: 6px 12px;
-  background: #DC3545;
-  color: #ffffff;
-  border: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  cursor: pointer;
-  border-radius: 0;
-  height: 32px;
-  margin-left: 10px; /* Tạo khoảng cách với ô cuối */
+.mode-section {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
-.clear-all-btn:hover {
-  background: #C82333;
+.mode-select {
+  padding: 6px;
+  font-size: 0.85rem;
+  border: 1px solid #d0d5dd;
+  border-radius: 0;
+}
+
+.mode-detail {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mode-textarea {
+  padding: 10px;
+  border: 1px solid #d0d5dd;
+  font-size: 0.85rem;
+  background: #f9fafb;
+  border-radius: 0;
+  resize: vertical;
 }
 
 .content-row {
@@ -146,28 +146,44 @@ textarea:focus {
   justify-content: flex-end;
 }
 
-#extractBtn {
-  margin-right: 20px; /* Đảm bảo Trích xuất thẳng hàng với Sao chép */
-}
-
-button {
-  flex: 1;
-  padding: 8px;
-  background: #007BFF;
-  color: #ffffff;
+.action-btn {
+  padding: 8px 12px;
   border: none;
   font-size: 0.85rem;
   font-weight: 500;
   cursor: pointer;
-  transition: background 0.2s;
   border-radius: 0;
+  transition: background 0.2s;
 }
 
-button:hover {
+.blue {
+  background: #007BFF; /* Xanh dương đậm */
+  color: #ffffff;
+}
+
+.blue:hover {
   background: #0056B3;
 }
 
-button:disabled {
+.red {
+  background: #DC3545; /* Đỏ đậm */
+  color: #ffffff;
+}
+
+.red:hover {
+  background: #C82333;
+}
+
+.green {
+  background: #1A5D1A; /* Xanh lá đậm */
+  color: #ffffff;
+}
+
+.green:hover {
+  background: #144B14;
+}
+
+.action-btn:disabled {
   background: #a0aec0;
   cursor: not-allowed;
 }
@@ -195,8 +211,17 @@ button:disabled {
     gap: 10px;
   }
 
-  .keyword-group {
-    max-width: 100%;
+  .keyword-input {
+    width: 100%;
+  }
+
+  .mode-section {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .mode-detail {
+    margin-top: 10px;
   }
 
   .content-row {
@@ -204,20 +229,12 @@ button:disabled {
     gap: 10px;
   }
 
-  textarea {
-    max-height: 300px;
-  }
-
   .button-row {
     flex-direction: column;
   }
 
-  #extractBtn {
-    margin-right: 0;
-    margin-bottom: 10px;
-  }
-
-  button {
+  .action-btn {
     width: 100%;
+    margin: 5px 0;
   }
 }
