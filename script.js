@@ -28,8 +28,8 @@ let currentModeText = '';
 document.getElementById('modeSelect').addEventListener('change', () => {
   const mode = document.getElementById('modeSelect').value;
   const savedText = localStorage.getItem(mode) || '';
-  document.getElementById('modeText').value = savedText; // Hiển thị nội dung lưu
-  document.getElementById('editText').value = ''; // Xóa nội dung chỉnh sửa khi chuyển
+  document.getElementById('modeText').value = savedText; // Hiển thị nội dung lưu (read-only)
+  document.getElementById('editText').value = savedText; // Cập nhật nội dung chỉnh sửa
   document.getElementById('modeDetail').style.display = 'block'; // Mở chế độ xem
   document.getElementById('editDetail').style.display = 'none'; // Ẩn chế độ chỉnh sửa
 });
@@ -44,6 +44,7 @@ document.getElementById('addMode').addEventListener('click', () => {
     document.getElementById('modeSelect').value = newMode;
     document.getElementById('modeDetail').style.display = 'block';
     document.getElementById('modeText').value = localStorage.getItem(newMode) || '';
+    document.getElementById('editText').value = localStorage.getItem(newMode) || '';
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
@@ -111,9 +112,9 @@ document.getElementById('detailMode').addEventListener('click', () => {
 document.getElementById('editMode').addEventListener('click', () => {
   const mode = document.getElementById('modeSelect').value;
   const savedText = localStorage.getItem(mode) || '';
-  document.getElementById('editText').value = savedText; // Hiển thị nội dung để chỉnh sửa
-  document.getElementById('editDetail').style.display = 'block';
-  document.getElementById('modeDetail').style.display = 'none'; // Ẩn chế độ xem
+  document.getElementById('editText').value = savedText; // Tải nội dung vào ô chỉnh sửa
+  document.getElementById('editDetail').style.display = 'block'; // Hiển thị ô chỉnh sửa
+  document.getElementById('modeDetail').style.display = 'none'; // Ẩn ô xem
 });
 
 document.getElementById('toggleMode').addEventListener('click', () => {
