@@ -27,6 +27,7 @@ document.getElementById('addMode').addEventListener('click', () => {
     saveModes(modes);
     loadModes();
     document.getElementById('modeDetail').style.display = 'block';
+    document.getElementById('modeText').value = localStorage.getItem(newMode) || ''; // Lấy nội dung cũ nếu có
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
@@ -58,6 +59,7 @@ document.getElementById('removeMode').addEventListener('click', () => {
     saveModes(modes);
     loadModes();
     document.getElementById('modeDetail').style.display = 'none';
+    document.getElementById('modeText').value = '';
     Toastify({
       text: 'Đã xóa chế độ!',
       duration: 2500,
@@ -72,6 +74,8 @@ document.getElementById('removeMode').addEventListener('click', () => {
 
 document.getElementById('detailMode').addEventListener('click', () => {
   document.getElementById('modeDetail').style.display = 'block';
+  const mode = document.getElementById('modeSelect').value;
+  document.getElementById('modeText').value = localStorage.getItem(mode) || ''; // Hiển thị nội dung cũ
 });
 
 document.getElementById('toggleMode').addEventListener('click', () => {
@@ -83,9 +87,9 @@ document.getElementById('attachMode').addEventListener('click', () => {
   const modeText = document.getElementById('modeText').value.trim();
   if (modeText) {
     const mode = document.getElementById('modeSelect').value;
-    localStorage.setItem(mode, modeText); // Lưu vĩnh viễn
+    localStorage.setItem(mode, modeText); // Lưu riêng cho từng chế độ
     Toastify({
-      text: 'Đã gắn xưng hô vĩnh viễn!',
+      text: 'Đã gắn xưng hô!',
       duration: 2500,
       gravity: 'top',
       position: 'right',
@@ -161,7 +165,7 @@ document.getElementById('extractBtn').addEventListener('click', () => {
     }
 
     const resultWithEnd = inputText.slice(startIndex, endIndex + endKeyword.length).trim();
-    const resultWithoutEnd = resultWithEnd.slice(0, resultWithEnd.length - endKeyword.length).trim();
+    const resultWithoutEnd = resultWithEnd.slice(0, -endKeyword.length).trim(); // Xóa từ khóa thứ hai
     const modeText = localStorage.getItem(document.getElementById('modeSelect').value) || '';
     output.value = resultWithoutEnd + (modeText ? '\n\n' + modeText : '');
   } catch (error) {
