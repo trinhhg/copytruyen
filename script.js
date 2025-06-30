@@ -26,9 +26,7 @@ document.getElementById('addMode').addEventListener('click', () => {
     modes.push(newMode);
     saveModes(modes);
     loadModes();
-    document.getElementById('modeDetail').style.display = 'flex';
-    document.getElementById('toggleMode').style.display = 'inline-block';
-    document.getElementById('attachMode').style.display = 'inline-block';
+    document.getElementById('modeDetail').style.display = 'block';
     Toastify({
       text: 'Đã thêm chế độ mới!',
       duration: 2500,
@@ -59,6 +57,7 @@ document.getElementById('removeMode').addEventListener('click', () => {
     localStorage.removeItem(mode);
     saveModes(modes);
     loadModes();
+    document.getElementById('modeDetail').style.display = 'none';
     Toastify({
       text: 'Đã xóa chế độ!',
       duration: 2500,
@@ -72,28 +71,21 @@ document.getElementById('removeMode').addEventListener('click', () => {
 });
 
 document.getElementById('detailMode').addEventListener('click', () => {
-  document.getElementById('modeDetail').style.display = 'flex';
-  document.getElementById('toggleMode').style.display = 'inline-block';
-  document.getElementById('attachMode').style.display = 'inline-block';
+  document.getElementById('modeDetail').style.display = 'block';
 });
 
 document.getElementById('toggleMode').addEventListener('click', () => {
   const detail = document.getElementById('modeDetail');
-  if (detail.style.display === 'none') {
-    detail.style.display = 'flex';
-    document.getElementById('toggleMode').textContent = 'Thu gọn';
-  } else {
-    detail.style.display = 'none';
-    document.getElementById('toggleMode').textContent = 'Thu gọn';
-  }
+  detail.style.display = detail.style.display === 'none' ? 'block' : 'none';
 });
 
 document.getElementById('attachMode').addEventListener('click', () => {
   const modeText = document.getElementById('modeText').value.trim();
   if (modeText) {
-    localStorage.setItem(document.getElementById('modeSelect').value, modeText);
+    const mode = document.getElementById('modeSelect').value;
+    localStorage.setItem(mode, modeText); // Lưu vĩnh viễn
     Toastify({
-      text: 'Đã gắn xưng hô!',
+      text: 'Đã gắn xưng hô vĩnh viễn!',
       duration: 2500,
       gravity: 'top',
       position: 'right',
@@ -168,9 +160,10 @@ document.getElementById('extractBtn').addEventListener('click', () => {
       return;
     }
 
-    const result = inputText.slice(startIndex, endIndex + endKeyword.length).trim();
+    const resultWithEnd = inputText.slice(startIndex, endIndex + endKeyword.length).trim();
+    const resultWithoutEnd = resultWithEnd.slice(0, resultWithEnd.length - endKeyword.length).trim();
     const modeText = localStorage.getItem(document.getElementById('modeSelect').value) || '';
-    output.value = result + (modeText ? '\n\n' + modeText : '');
+    output.value = resultWithoutEnd + (modeText ? '\n\n' + modeText : '');
   } catch (error) {
     Toastify({
       text: 'Lỗi khi xử lý nội dung: ' + error.message,
