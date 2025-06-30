@@ -68,6 +68,7 @@ h1 {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
 .mode-select {
@@ -79,8 +80,7 @@ h1 {
 
 .mode-detail {
   margin-top: 10px;
-  width: 100%; /* Kích thước bằng ô Tìm kiếm văn bản */
-  max-width: 100%; /* Đảm bảo không vượt quá container */
+  width: 100%; /* Đặt dưới nút Gắn */
 }
 
 .mode-textarea {
@@ -169,18 +169,22 @@ textarea:focus {
   background: #C82333;
 }
 
-.green {
-  background: #1A5D1A; /* Xanh lá đậm */
+.green-light {
+  background: #28A745; /* Xanh nhẹ hơn */
   color: #ffffff;
 }
 
-.green:hover {
-  background: #144B14;
+.green-light:hover {
+  background: #218838;
 }
 
 .action-btn:disabled {
   background: #a0aec0;
   cursor: not-allowed;
+}
+
+.full-width {
+  width: 100%; /* Chiều dài bằng ô văn bản */
 }
 
 .sr-only {
